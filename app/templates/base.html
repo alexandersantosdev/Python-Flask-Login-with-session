@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <title>Certificados SMED - {% block title %}{% endblock %}</title>
     <style>
+        nav{
+            padding: 0 !important;
+            margin: 0 !important;
+        }
         .footer {
             position: absolute;
             width: 100%;
@@ -17,57 +21,60 @@
 
 <body>
 
-    <div class="container">
-        <div class="column">
-            <div class="hero-head">
-                <nav class="navbar">
-                    <div class="container">
-                        <div class="navbar-brand">
-                            <a class="navbar-item">
-                                <img src="https://bulma.io/images/bulma-type-white.png" alt="Logo">
+
+    <div class="column">
+        <div class="hero-head">
+            <nav class="navbar is-dark">
+                <div class="container">
+                    <div class="navbar-brand">
+                        <a class="navbar-item">
+                            CRUDIZINHO
+                        </a>
+                        <span class="navbar-burger" data-target="navbarMenuHeroA">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                    </div>
+                    <div id="navbarMenuHeroA" class="navbar-menu">
+                        <div class="navbar-start">
+                            <a class="navbar-item" href="{{url_for('index')}}">
+                                Formações
                             </a>
-                            <span class="navbar-burger" data-target="navbarMenuHeroA">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </span>
+
                         </div>
-                        <div id="navbarMenuHeroA" class="navbar-menu">
-                            <div class="navbar-start">
-                                <a class="navbar-item" href="{{url_for('index')}}">
-                                    Formações
-                                </a>
-                                
-                            </div>
-                            <div class="navbar-end">
-                                
-                                {% if not current_user.is_authenticated %}
-                                <a class="navbar-item" href="{{url_for('login')}}">
-                                    Login
-                                </a>
-                                {% endif%}
-                                <span class="navbar-item">
-                                    {% if current_user.is_authenticated %}
-                                    {{ current_user.name }} - <a href="{{url_for('logout')}}">sair</a></span>
-                                {% endif%}
-                            </div>
+                        <div class="navbar-end">
+
+                            {% if not current_user.is_authenticated %}
+                            <a class="navbar-item" href="{{url_for('login')}}">
+                                Login
+                            </a>
+                            {% endif%}
+                            <div class="navbar-item">
+                                {% if current_user.is_authenticated %}
+                                Olá {{ current_user.name }} <a class="button is-danger"
+                                    href="{{url_for('logout')}}">sair</a></div>
+                            {% endif%}
                         </div>
                     </div>
-                </nav>
-            </div>
+                </div>
+            </nav>
         </div>
-        <div class="container is-fluid">
-            <br>
-            <div class="columns">
-                <div class="column"></div>
-                <div class="column">
+    </div>
+    <div class="container is-fluid">
+        <br>
+        <div class="columns">
+            <div class="column"></div>
+            <div class="column">
 
-                    {% with messages = get_flashed_messages(with_categories=true) %}
-                    {% if messages %}
-                    <ul class=flashes>
-                        {% for category, message in messages %}
-                        {% if category == 'is-danger' %}
-                        <div class="notification is-danger">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                <ul class=flashes>
+                    {% for category, message in messages %}
+                    {% if category == 'is-danger' %}
+                    <div class="notification is-danger">
+                        {% elif category == 'is-warning' %}
+                        <div class="notification is-warning">
                             {% else %}
                             <div class="notification is-success">
                                 {% endif %}
@@ -80,8 +87,8 @@
                             {% endwith%}
                         </div>
                         <div class="column"></div>
-                </div>
-                {% block main %}{% endblock %}
+                    </div>
+                    {% block main %}{% endblock %}
             </div>
         </div>
         <footer class="footer">

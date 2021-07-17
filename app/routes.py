@@ -46,7 +46,9 @@ def register():
             except:
                 flash('Já existe um usuário cadastrado com este email', category='is-danger')
                 return redirect(url_for('register'))
-                
+        else:
+            flash('Preencha todos os campos', category='is-warning')
+
     return render_template('register.html')
 
 

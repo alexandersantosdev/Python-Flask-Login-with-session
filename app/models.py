@@ -1,7 +1,7 @@
 from datetime import datetime
 
 from flask import templating
-from app import db, login_manger, admin
+from app import db, login_manger
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from flask_admin.contrib.sqla import ModelView 
@@ -58,4 +58,3 @@ class Inscricao(db.Model):
     data_de_inscricao = db.Column(db.Date(), default = datetime.now())
 
 
-admin.add_view(ModelView(Formacao, db.session))
