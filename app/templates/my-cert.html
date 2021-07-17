@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %}Meus certificados{%  endblock %}
+{% block main %}
+{% if not current_user.is_authenticated %}
+  Você precisa estar logado(a) para ver seus certificados!
+{% endif %}
+
+{%  endblock %}
+{% block script %}{%  endblock %}

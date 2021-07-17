@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block title %}Formações{% endblock %}
+{% block main %}
+
+<div class="columns">
+    <div class="column"></div>
+    <div class="column is-three-quarters">
+        {% if current_user.is_authenticated %}
+                                
+        <a class="button is-primary" href="{{url_for('cadastrar_formacao')}}">
+            Cadastrar formação
+        </a>
+        {% endif %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Tema</th>
+                    <th>Carga Horária</th>
+                    <th>Data</th>
+                    {% if current_user.is_authenticated %}
+                    <th>Ações</th>
+                    {% endif %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for f in formacoes %}
+                <tr>
+                    <td>{{f.tema}}</td>
+                    <td>{{f.carga_horaria}}</td>
+                    <td>{{f.data}}</td>
+                    {% if current_user.is_authenticated %}
+                    <td>
+                        <div class="field">
+                            <p class="control">
+                                <a href="#">
+
+                                    <button class="button is-warning" type="button">
+                                        <span class="icon is-small">
+                                            <i class="fas fa-edit"></i>
+                                        </span>
+                                    </button>
+                                </a>
+                            </p>
+                          </div>
+                    </td>
+                    <td>
+                        <div class="field">
+                            <p class="control">
+                                <a href="/delete/{{f.id}}">
+                                    <button class="button is-danger" type="button">
+                                        <span class="icon is-small is-right">
+                                            <i class="fas fa fa-trash"></i>
+                                        </span>
+                                    </button>
+                                </a>
+                            </p>
+                          </div>
+                    </td>
+                    
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+    <div class="column"></div>
+</div>
+
+
+{% endblock %}
+{% block script %}{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'base.html' %} {% block title %}Login{% endblock %} {% block main %}
+<div class="columns">
+  <div class="column"></div>
+  <div class="column">
+    <h1 class="title is-1 has-text-centered">Cadastro</h1>
+    <br>
+    <form action="/register" method="POST">
+      <div class="field">
+        <p class="control has-icons-left has-icons-right">
+          <input
+            class="input"
+            type="text"
+            placeholder="Nome Completo"
+            name="nome"
+          />
+          <span class="icon is-small is-left">
+            <i class="fas fa-user"></i>
+          </span>
+
+          <span class="icon is-small is-right">
+            <i class="fas fa-check"></i>
+          </span>
+        </p>
+      </div>
+
+      <div class="field">
+        <p class="control has-icons-left has-icons-right">
+          <input class="input" type="email" placeholder="Email" name="email" />
+          <span class="icon is-small is-left">
+            <i class="fas fa-envelope"></i>
+          </span>
+
+          <span class="icon is-small is-right">
+            <i class="fas fa-check"></i>
+          </span>
+        </p>
+      </div>
+      <div class="field">
+        <p class="control has-icons-left">
+          <input
+            class="input"
+            type="password"
+            placeholder="Senha"
+            name="password"
+          />
+          <span class="icon is-small is-left">
+            <i class="fas fa-lock"></i>
+          </span>
+        </p>
+      </div>
+      <div class="field">
+        <p class="control">
+          <button class="button is-success" type="submit">Cadastrar</button>
+        </p>
+      </div>
+    </form>
+  </div>
+  <div class="column"></div>
+</div>
+{% endblock %} {% block script %}{% endblock %}

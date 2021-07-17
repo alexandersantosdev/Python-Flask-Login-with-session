@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block title %}Cadastro de formação{% endblock %}
+{% block main %}
+{% if not current_user.is_authenticated %}
+Você precisa estar logado(a) para cadastrar formações!
+{% else %}
+<div class="columns">
+  <div class="column"></div>
+  <div class="column is-three-quarters">
+    <h1 class="title is-1 has-text-centered">Cadastrar formação</h1>
+
+    <br>
+    <form action="/cadastrar_formacao" method="POST">
+      <div class="field">
+        <p class="control has-icons-left has-icons-right">
+          <input class="input" type="text" placeholder="Tema" name="tema" />
+          <span class="icon is-small is-left">
+            <i class="fas fa fa-certificate"></i>
+          </span>
+
+          <span class="icon is-small is-right">
+            <i class="fas fa-check"></i>
+          </span>
+        </p>
+        <br>
+        <p class="control has-icons-left has-icons-right">
+          <input class="input" type="text" placeholder="Data" name="data" />
+          <span class="icon is-small is-left">
+            <i class="fas fa fa-calendar"></i>
+          </span>
+
+          <span class="icon is-small is-right">
+            <i class="fas fa fa-check"></i>
+          </span>
+        </p>
+        <br>
+        <p class="control has-icons-left has-icons-right">
+          <input class="input" type="number" placeholder="Carga horária" name="carga" />
+          <span class="icon is-small is-left">
+            <i class="fas fa fa-calculator"></i>
+          </span>
+
+          <span class="icon is-small is-right">
+            <i class="fas fa-check"></i>
+          </span>
+        </p>
+      </div>
+      <div class="field">
+        <p class="control">
+          <button class="button is-success" type="submit">Cadastrar</button>
+          <button class="button is-warning" type="reset">Limpar</button>
+
+        </p>
+      </div>
+    </form>
+  </div>
+
+  <div class="column"></div>
+</div>
+{% endif %}
+{% endblock %}
+{% block script %}{% endblock %}
