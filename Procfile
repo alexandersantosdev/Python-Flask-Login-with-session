@@ -1,1 +1,1 @@
-web gunicorn run:app.run()
+web gunicorn run:init()
