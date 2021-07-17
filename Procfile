@@ -1,1 +1,1 @@
-web gunicorn run:init()
+web --bind 0.0.0.0:5000 run:app
